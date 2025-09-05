@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analytics - ShortLink</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center">
+            <a href="index.html" class="text-xl font-bold text-gray-900"
+              >ShortLink</a
+            >
+          </div>
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="index.html"
+              class="text-gray-600 hover:text-gray-900 transition-colors"
+              >Home</a
+            >
+            <a
+              href="dashboard.html"
+              class="text-gray-600 hover:text-gray-900 transition-colors"
+              >Dashboard</a
+            >
+            <a
+              href="analytics.html"
+              class="text-black font-medium border-b-2 border-black"
+              >Analytics</a
+            >
+            <a
+              href="#"
+              class="text-gray-600 hover:text-gray-900 transition-colors"
+              >About</a
+            >
+            <div class="flex items-center space-x-2">
+              <div
+                class="w-8 h-8 bg-black rounded-full flex items-center justify-center"
+              >
+                <span class="text-white text-sm font-medium">JD</span>
+              </div>
+              <button class="text-gray-600 hover:text-gray-900">
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="md:hidden">
+            <button
+              class="text-gray-600 hover:text-gray-900"
+              onclick="toggleMobileMenu()"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile dropdown menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden border-t border-gray-200 bg-white"
+      >
+        <div class="px-4 py-3 space-y-2">
+          <a href="index.html" class="block text-gray-600 hover:text-gray-900"
+            >Home</a
+          >
+          <a
+            href="dashboard.html"
+            class="block text-gray-600 hover:text-gray-900"
+            >Dashboard</a
+          >
+          <a href="analytics.html" class="block text-black font-medium"
+            >Analytics</a
+          >
+          <div
+            class="border-t border-gray-200 pt-3 flex items-center space-x-3"
+          >
+            <div
+              class="w-8 h-8 bg-black rounded-full flex items-center justify-center"
+            >
+              <span class="text-white text-sm font-medium">JD</span>
+            </div>
+            <span class="text-gray-700 font-medium">John Doe</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+      <!-- Header -->
+      <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Analytics</h1>
+        <p class="text-gray-600">
+          View detailed analytics of your shortened links
+        </p>
+      </div>
+
+      <!-- Summary Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div class="bg-white rounded-lg border border-gray-200 p-6">
+          <h3 class="text-sm text-gray-500">Total Links</h3>
+          <p class="text-2xl font-bold text-gray-900">128</p>
+        </div>
+        <div class="bg-white rounded-lg border border-gray-200 p-6">
+          <h3 class="text-sm text-gray-500">Total Clicks</h3>
+          <p class="text-2xl font-bold text-gray-900">24,560</p>
+        </div>
+        <div class="bg-white rounded-lg border border-gray-200 p-6">
+          <h3 class="text-sm text-gray-500">Avg. CTR</h3>
+          <p class="text-2xl font-bold text-gray-900">7.2%</p>
+        </div>
+        <div class="bg-white rounded-lg border border-gray-200 p-6">
+          <h3 class="text-sm text-gray-500">Top Link</h3>
+          <p class="text-sm font-medium text-blue-600 truncate">
+            shortlink.io/abc123
+          </p>
+        </div>
+      </div>
+
+      <!-- Charts Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <!-- Clicks Over Time -->
+        <div class="bg-white rounded-lg border border-gray-200 p-6">
+          <h2 class="text-lg font-semibold text-gray-900 mb-4">
+            Clicks Over Time
+          </h2>
+          <div
+            class="h-64 bg-gray-100 flex items-center justify-center text-gray-400 text-sm rounded-lg"
+          >
+            [Chart Placeholder]
+          </div>
+        </div>
+
+        <!-- Top Referrers -->
+        <div class="bg-white rounded-lg border border-gray-200 p-6">
+          <h2 class="text-lg font-semibold text-gray-900 mb-4">
+            Top Referrers
+          </h2>
+          <div
+            class="h-64 bg-gray-100 flex items-center justify-center text-gray-400 text-sm rounded-lg"
+          >
+            [Chart Placeholder]
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Performing Links Table -->
+      <div class="bg-white rounded-lg border border-gray-200">
+        <div class="px-6 py-4 border-b border-gray-200">
+          <h2 class="text-lg font-semibold text-gray-900">
+            Top Performing Links
+          </h2>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-gray-50">
+              <tr>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Short Link
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Clicks
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  CTR
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Last Click
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-blue-600">
+                  shortlink.io/abc123
+                </td>
+                <td class="px-6 py-4">12,345</td>
+                <td class="px-6 py-4">9.5%</td>
+                <td class="px-6 py-4 text-sm text-gray-500">2 hours ago</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-blue-600">
+                  shortlink.io/xyz789
+                </td>
+                <td class="px-6 py-4">6,870</td>
+                <td class="px-6 py-4">5.8%</td>
+                <td class="px-6 py-4 text-sm text-gray-500">Yesterday</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-blue-600">
+                  shortlink.io/test22
+                </td>
+                <td class="px-6 py-4">5,345</td>
+                <td class="px-6 py-4">6.1%</td>
+                <td class="px-6 py-4 text-sm text-gray-500">3 days ago</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobile-menu");
+        if (menu) menu.classList.toggle("hidden");
+      }
+    </script>
+  </body>
+</html>

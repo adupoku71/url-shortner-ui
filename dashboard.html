@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - ShortLink</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center">
+            <a href="#" class="text-xl font-bold text-gray-900">ShortLink</a>
+          </div>
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="index.html"
+              class="text-gray-600 hover:text-gray-900 transition-colors"
+              >Home</a
+            >
+            <a
+              href="dashboard.html"
+              class="text-black font-medium border-b-2 border-black pb-4"
+              >Dashboard</a
+            >
+            <a
+              href="analytics.html"
+              class="text-gray-600 hover:text-gray-900 transition-colors"
+              >Analytics</a
+            >
+
+            <div class="flex items-center space-x-2">
+              <div
+                class="w-8 h-8 bg-black rounded-full flex items-center justify-center"
+              >
+                <span class="text-white text-sm font-medium">JD</span>
+              </div>
+              <button class="text-gray-600 hover:text-gray-900">
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="md:hidden">
+            <button
+              class="text-gray-600 hover:text-gray-900"
+              onclick="toggleMobileMenu()"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden border-t border-gray-200 bg-white"
+      >
+        <div class="px-4 py-3 space-y-2">
+          <a href="index.html" class="block text-gray-600 hover:text-gray-900"
+            >Home</a
+          >
+          <a href="dashboard.html" class="block text-black font-medium"
+            >Dashboard</a
+          >
+          <a
+            href="analytics.html"
+            class="block text-gray-600 hover:text-gray-900"
+            >Analytics</a
+          >
+          <div
+            class="border-t border-gray-200 pt-3 flex items-center space-x-3"
+          >
+            <div
+              class="w-8 h-8 bg-black rounded-full flex items-center justify-center"
+            >
+              <span class="text-white text-sm font-medium">JD</span>
+            </div>
+            <span class="text-gray-700 font-medium">John Doe</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+      <!-- Header -->
+      <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Dashboard</h1>
+        <p class="text-gray-600">Manage and track all your shortened links</p>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <!-- cards (same as you already had)… -->
+      </div>
+
+      <!-- Create New Link -->
+      <div class="bg-white rounded-lg border border-gray-200 p-6 mb-8">
+        <h2 class="text-lg font-semibold text-gray-900 mb-4">
+          Create New Short Link
+        </h2>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <input
+            type="url"
+            placeholder="Enter your long URL here..."
+            class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent outline-none"
+            id="new-url-input"
+          />
+          <input
+            type="text"
+            placeholder="Custom alias (optional)"
+            class="sm:w-48 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent outline-none"
+            id="custom-alias"
+          />
+          <button
+            onclick="createShortLink()"
+            class="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-colors whitespace-nowrap"
+          >
+            Create Link
+          </button>
+        </div>
+      </div>
+
+      <!-- Links Table -->
+      <div class="bg-white rounded-lg border border-gray-200">
+        <div class="px-6 py-4 border-b border-gray-200">
+          <div
+            class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+          >
+            <h2 class="text-lg font-semibold text-gray-900">Your Links</h2>
+            <div class="flex items-center space-x-4">
+              <input
+                type="text"
+                placeholder="Search links..."
+                class="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-500 focus:border-transparent outline-none"
+              />
+              <select
+                class="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-500 focus:border-transparent outline-none"
+              >
+                <option>All Links</option>
+                <option>Active</option>
+                <option>Inactive</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-gray-50">
+              <tr>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Short Link
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Original URL
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Clicks
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Created
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Status
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200" id="links-table">
+              <!-- sample rows (your existing data)… -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="px-6 py-3 border-t border-gray-200">
+          <div class="flex items-center justify-between">
+            <div class="text-sm text-gray-500">
+              Showing 1 to 3 of 24 results
+            </div>
+            <div class="flex items-center space-x-2">
+              <button
+                class="px-3 py-1 border border-gray-300 rounded text-sm hover:bg-gray-50"
+              >
+                Previous
+              </button>
+              <button class="px-3 py-1 bg-black text-white rounded text-sm">
+                1
+              </button>
+              <button
+                class="px-3 py-1 border border-gray-300 rounded text-sm hover:bg-gray-50"
+              >
+                2
+              </button>
+              <button
+                class="px-3 py-1 border border-gray-300 rounded text-sm hover:bg-gray-50"
+              >
+                3
+              </button>
+              <button
+                class="px-3 py-1 border border-gray-300 rounded text-sm hover:bg-gray-50"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobile-menu");
+        console.log("clicked");
+
+        if (menu) menu.classList.toggle("hidden");
+      }
+
+      function copyLink(link) {
+        navigator.clipboard.writeText(link).then(() => {
+          alert("Copied: " + link);
+        });
+      }
+
+      function createShortLink() {
+        const urlInput = document.getElementById("new-url-input");
+        const aliasInput = document.getElementById("custom-alias");
+
+        if (!urlInput.value.trim()) {
+          alert("Please enter a URL to shorten");
+          return;
+        }
+
+        const shortId =
+          aliasInput.value.trim() || Math.random().toString(36).substr(2, 6);
+        const shortUrl = `shortlink.io/${shortId}`;
+
+        const tableBody = document.getElementById("links-table");
+        const newRow = `
+        <tr class="hover:bg-gray-50">
+          <td class="px-6 py-4 whitespace-nowrap">
+            <div class="flex items-center">
+              <span class="text-sm font-medium text-blue-600">${shortUrl}</span>
+              <button onclick="copyLink('${shortUrl}')" class="ml-2 text-gray-400 hover:text-gray-600">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                </svg>
+              </button>
+            </div>
+          </td>
+          <td class="px-6 py-4">
+            <div class="text-sm text-gray-900 max-w-xs truncate">${urlInput.value}</div>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">0</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Just now</td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm space-x-2">
+            <button class="text-gray-600 hover:text-gray-900">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+            </button>
+            <button class="text-gray-600 hover:text-gray-900">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+              </svg>
+            </button>
+            <button class="text-red-600 hover:text-red-900">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+              </svg>
+            </button>
+          </td>
+        </tr>
+      `;
+        tableBody.insertAdjacentHTML("afterbegin", newRow);
+
+        // Clear inputs
+        urlInput.value = "";
+        aliasInput.value = "";
+      }
+    </script>
+  </body>
+</html>
